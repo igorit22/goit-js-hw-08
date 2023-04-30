@@ -27,7 +27,7 @@ if (savedFeedbackState) {
   message.value = savedFeedbackState.message;
 }
 
-// під час сабміту форми очищуємо сховище та поля форми та виводимо дані в консоль
+// під час сабміту форми робимо перевірки та виводимо дані в консоль і очищуємо сховище та поля форми
 
 form.addEventListener('submit', function (event) {
   event.preventDefault();
@@ -41,11 +41,11 @@ form.addEventListener('submit', function (event) {
   }
 
   // перевіряємо валідність поля email за допомогою регулярного виразу
-  
+
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email.value)) {
     console.log('Email is invalid');
-    alert('Введіть валідне значення e-mail');
+    alert('Будь ласка, введіть валідне значення e-mail');
     return;
   }
 
