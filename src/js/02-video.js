@@ -6,19 +6,22 @@ const player = new Player(iframe);
 
 const currentTimeKey = 'videoplayer-current-time';
 
-player.on('timeupdate', throttle(function(event) {
-  localStorage.setItem(currentTimeKey, event.seconds.toString());
-}, 1000));
+player.on(
+  'timeupdate',
+  throttle(function (event) {
+    localStorage.setItem(currentTimeKey, event.seconds.toString());
+  }, 1000)
+);
 
 const savedTime = localStorage.getItem(currentTimeKey);
 if (savedTime) {
   player.setCurrentTime(parseFloat(savedTime));
 }
 
-player.on('play', function() {
+player.on('play', function () {
   console.log('played the video!');
 });
 
-player.getVideoTitle().then(function(title) {
+player.getVideoTitle().then(function (title) {
   console.log('title:', title);
 });
