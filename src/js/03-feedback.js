@@ -32,22 +32,20 @@ if (savedFeedbackState) {
 form.addEventListener('submit', function (event) {
   event.preventDefault();
 
-  // перевіряємо, щоб значення поля email не було порожнім
-
-  if (email.value.trim() === '') {
-    console.log('Email field is empty');
-    alert('Будь ласка, заповніть поле e-mail');
-    return;
-  }
-
-  // перевіряємо валідність поля email за допомогою регулярного виразу
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email.value)) {
-    console.log('Email is invalid');
-    alert('Будь ласка, введіть валідне значення e-mail');
-    return;
-  }
+    // перевірка, що обидва поля email та message заповнені
+    if (email.value.trim() === '' || message.value.trim() === '') {
+      console.log('Поля email та/або повідомлення порожні');
+      alert('Будь ласка, заповніть поля e-mail та повідомлення');
+      return;
+    }
+  
+    // перевірка валідності поля email за допомогою регулярного виразу
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.value)) {
+      console.log('Email не валідний');
+      alert('Будь ласка, введіть валідне значення e-mail');
+      return;
+    }
 
   console.log('Feedback data:', {
     email: email.value,
